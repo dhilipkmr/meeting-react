@@ -1,33 +1,124 @@
-.App {
+input {
+  padding: 5px;
+  font-size: 12px;
+}
+li {
+  list-style: none;
+}
+.cursorPtr {
+  cursor: pointer;
+}
+.dn {
+  display: none;
+}
+
+.error {
+  color: red;
+}
+
+.padB10 {
+  padding-bottom: 10px;
+}
+.marginT10 {
+  margin-top: 10px;
+}
+.marginB20 {
+  margin-bottom: 20px;
+}
+.btn {
+  padding: 5px;
+  border-radius: 5px;
+  background: white;
+}
+.btn:hover {
+  cursor: pointer;
+}
+button:active {
+  outline: none;
+  border: none;
+}
+
+.fs20 {
+  font-size: 20px;
+  font-weight: bold;
+}
+.fb {
+  font-weight: bold;
+}
+input:focus {
+  outline: none !important;
+}
+.d-inbl {
+  display: inline-block;
+}
+.padL10  {
+  padding-left: 10px;
+}
+
+.textCenter {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.margin20 {
+  margin: 20px;
+}
+.marginT10 {
+  margin-top: 10px;
+}
+.padT5 {
+  padding-top: 5px;
+}
+.padT10 {
+  padding-top: 5px;
+}
+.padL10 {
+  padding-left: 10px;
+}
+.marginT5 {
+  margin-top: 5px;
+}
+.marginTB40 {
+  margin: 40px 0;
+}
+.marginT30 {
+  margin-top: 30px;
+}
+.marginT20 {
+  margin-top: 20px;
+}
+.txtLeft {
+  text-align: left;
+}
+.padT10 {
+  padding-top: 10px;
+}
+.activeTab {
+  background: #4cb5f3;
+  border-radius: 10px;
+}
+.tab {
+  width: 125px;
+  font-weight: bold;
+  padding: 5px 25px;
+}
+.card {
+  width: 25%;
+  box-shadow: 0 2px 4px 0 #777;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  background: #eefad7;
+  margin-left: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.inputContent {
+  background: lightblue;
+  border: 2px solid #025773;
+  padding: 0px 20px;
+  display: inline-block;
+  border-radius: 12px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.meetingSummary {
+  max-width: 70%;
+  margin-left: 15%;
 }

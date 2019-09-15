@@ -34,12 +34,12 @@ context('Meeting Scheduler Test', () => {
 
   it('Should add Meeting under All meetings tab', () => {
     cy.get('[data-cy="allMeetingsTab"]').should('have.class', 'activeTab');
-    cy.get('#meetingSummary ul [data-cy="summaryHeading"]').then(($headings) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="summaryHeading"]').then(($headings) => {
       expect($headings[0].innerText).to.contain('Block B');
       expect($headings[0].innerText).to.contain('Floor 2');
       expect($headings[0].innerText).to.contain('Meeting Room 2');
     });
-    cy.get('#meetingSummary ul [data-cy="startSummary"]').then(($startDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="startSummary"]').then(($startDates) => {
       let dateToUse = new Date(new Date().setDate(new Date().getDate() + 1));
       dateToUse = new Date(dateToUse.getFullYear(), dateToUse.getMonth(), dateToUse.getDate(), 13);
       expect($startDates[0].innerText).to.contain(dateToUse.getFullYear());
@@ -47,7 +47,7 @@ context('Meeting Scheduler Test', () => {
       expect($startDates[0].innerText.toLowerCase()).to.contain(['', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'aug', 'sep', 'oct', 'nov', 'dec'][dateToUse.getMonth()]);
       expect($startDates[0].innerText).to.contain('13:00');
     });
-    cy.get('#meetingSummary ul [data-cy="endSummary"]').then(($endDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="endSummary"]').then(($endDates) => {
       let dateToUse = new Date(new Date().setDate(new Date().getDate() + 1));
       dateToUse = new Date(dateToUse.getFullYear(), dateToUse.getMonth(), dateToUse.getDate(), 14);
       expect($endDates[0].innerText).to.contain(dateToUse.getFullYear());
@@ -85,7 +85,7 @@ context('Meeting Scheduler Test', () => {
     cy.get('@endTime').type('23:59');
     cy.get('@scheduleBtn').click();
 
-    cy.get('#meetingSummary ul [data-cy="summaryHeading"]').then(($headings) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="summaryHeading"]').then(($headings) => {
       expect($headings[0].innerText).to.contain('Block B');
       expect($headings[0].innerText).to.contain('Block B');
       expect($headings[0].innerText).to.contain('Floor 2');
@@ -94,7 +94,7 @@ context('Meeting Scheduler Test', () => {
       expect($headings[0].innerText).to.contain('Meeting Room 2');
     });
 
-    cy.get('#meetingSummary ul [data-cy="startSummary"]').then(($startDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="startSummary"]').then(($startDates) => {
       let date = new Date(dateToUse.getFullYear(), dateToUse.getMonth(), dateToUse.getDate(), 23, 58);
       expect($startDates[0].innerText).to.contain(date.getFullYear());
       expect($startDates[0].innerText).to.contain(date.getDate());
@@ -110,7 +110,7 @@ context('Meeting Scheduler Test', () => {
 
     });
     
-    cy.get('#meetingSummary ul [data-cy="endSummary"]').then(($endDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="endSummary"]').then(($endDates) => {
       let date = new Date(dateToUse.getFullYear(), dateToUse.getMonth(), dateToUse.getDate(), 23, 59);
       expect($endDates[0].innerText).to.contain(date.getFullYear());
       expect($endDates[0].innerText).to.contain(date.getDate());
@@ -128,12 +128,12 @@ context('Meeting Scheduler Test', () => {
   
   it('Should add Meeting under All meetings tab', () => {
     cy.get('[data-cy="allMeetingsTab"]').should('have.class', 'activeTab');
-    cy.get('#meetingSummary ul [data-cy="summaryHeading"]').then(($headings) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="summaryHeading"]').then(($headings) => {
       expect($headings[0].innerText).to.contain('Block B');
       expect($headings[0].innerText).to.contain('Floor 2');
       expect($headings[0].innerText).to.contain('Meeting Room 2');
     });
-    cy.get('#meetingSummary ul [data-cy="startSummary"]').then(($startDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="startSummary"]').then(($startDates) => {
       let dateToUse = new Date(new Date().setDate(new Date().getDate() + 1));
       dateToUse = new Date(dateToUse.getFullYear(), dateToUse.getMonth(), dateToUse.getDate(), 13);
       expect($startDates[0].innerText).to.contain(dateToUse.getFullYear());
@@ -141,7 +141,7 @@ context('Meeting Scheduler Test', () => {
       expect($startDates[0].innerText.toLowerCase()).to.contain(['', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'aug', 'sep', 'oct', 'nov', 'dec'][dateToUse.getMonth()]);
       expect($startDates[0].innerText).to.contain('13:00');
     });
-    cy.get('#meetingSummary ul [data-cy="endSummary"]').then(($endDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="endSummary"]').then(($endDates) => {
       let dateToUse = new Date(new Date().setDate(new Date().getDate() + 1));
       dateToUse = new Date(dateToUse.getFullYear(), dateToUse.getMonth(), dateToUse.getDate(), 14);
       expect($endDates[0].innerText).to.contain(dateToUse.getFullYear());
@@ -180,13 +180,13 @@ context('Meeting Scheduler Test', () => {
     cy.get('@endTime').type('23:59');
     cy.get('@scheduleBtn').click();
 
-    cy.get('#meetingSummary ul [data-cy="summaryHeading"]').then(($headings) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="summaryHeading"]').then(($headings) => {
       expect($headings[0].innerText).to.contain('Block B');
       expect($headings[0].innerText).to.contain('Floor 2');
       expect($headings[0].innerText).to.contain('Meeting Room 2');
     });
 
-    cy.get('#meetingSummary ul [data-cy="startSummary"]').then(($startDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="startSummary"]').then(($startDates) => {
       let date = new Date(dateToUse.getFullYear(), dateToUse.getMonth(), dateToUse.getDate(), 23, 58);
       expect($startDates[0].innerText).to.contain(date.getFullYear());
       expect($startDates[0].innerText).to.contain(date.getDate());
@@ -194,7 +194,7 @@ context('Meeting Scheduler Test', () => {
       expect($startDates[0].innerText).to.contain('23:58');
     });
     
-    cy.get('#meetingSummary ul [data-cy="endSummary"]').then(($endDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="endSummary"]').then(($endDates) => {
       let date = new Date(dateToUse.getFullYear(), dateToUse.getMonth(), dateToUse.getDate(), 23, 59);
       expect($endDates[0].innerText).to.contain(date.getFullYear());
       expect($endDates[0].innerText).to.contain(date.getDate());
@@ -231,7 +231,7 @@ context('Meeting Scheduler Test', () => {
     cy.get('@endTime').type('23:57');
     cy.get('@scheduleBtn').click();
 
-    cy.get('#meetingSummary ul [data-cy="summaryHeading"]').then(($headings) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="summaryHeading"]').then(($headings) => {
       expect($headings[0].innerText).to.contain('Block B');
       expect($headings[0].innerText).to.contain('Block B');
       expect($headings[0].innerText).to.contain('Floor 2');
@@ -240,7 +240,7 @@ context('Meeting Scheduler Test', () => {
       expect($headings[0].innerText).to.contain('Meeting Room 2');
     });
 
-    cy.get('#meetingSummary ul [data-cy="startSummary"]').then(($startDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="startSummary"]').then(($startDates) => {
       let date = new Date(dateToUse.getFullYear(), dateToUse.getMonth(), dateToUse.getDate(), 23, 56);
       expect($startDates[0].innerText).to.contain(date.getFullYear());
       expect($startDates[0].innerText).to.contain(date.getDate());
@@ -255,7 +255,7 @@ context('Meeting Scheduler Test', () => {
 
     });
     
-    cy.get('#meetingSummary ul [data-cy="endSummary"]').then(($endDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="endSummary"]').then(($endDates) => {
       let date = new Date(dateToUse.getFullYear(), dateToUse.getMonth(), dateToUse.getDate(), 23, 57);
       expect($endDates[0].innerText).to.contain(date.getFullYear());
       expect($endDates[0].innerText).to.contain(date.getDate());
@@ -287,13 +287,13 @@ context('Meeting Scheduler Test', () => {
     cy.get('@endDate').type(year + '-' + month + '-' + day);
     cy.get('@endTime').type('14:00');
     cy.get('@scheduleBtn').click();
-    cy.get('#meetingSummary ul [data-cy="summaryHeading"]').then(($headings) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="summaryHeading"]').then(($headings) => {
       expect($headings.length).to.be.eq(1);
     });
-    cy.get('#meetingSummary ul [data-cy="startSummary"]').then(($startDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="startSummary"]').then(($startDates) => {
       expect($startDates.length).to.be.eq(1);
     });
-    cy.get('#meetingSummary ul [data-cy="endSummary"]').then(($endDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="endSummary"]').then(($endDates) => {
       expect($endDates.length).to.be.eq(1);
     })
   });
@@ -315,7 +315,7 @@ context('Meeting Scheduler Test', () => {
     cy.get('@endDate').type(year + '-' + month + '-' + day);
     cy.get('@endTime').type('14:00');
     cy.get('@scheduleBtn').click();
-    cy.get('.error').then(($err) => {
+    cy.get('[data-cy="error"]').then(($err) => {
       expect($err[0].innerText).to.contain('The room is Unavailable');
     });
   });
@@ -337,16 +337,16 @@ context('Meeting Scheduler Test', () => {
     cy.get('@endDate').type(year + '-' + month + '-' + day);
     cy.get('@endTime').type('14:00');
     cy.get('@scheduleBtn').click();
-    cy.get('#meetingSummary ul [data-cy="summaryHeading"]').then(($headings) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="summaryHeading"]').then(($headings) => {
       expect($headings.length).to.be.eq(1);
     });
-    cy.get('#meetingSummary ul [data-cy="startSummary"]').then(($startDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="startSummary"]').then(($startDates) => {
       expect($startDates.length).to.be.eq(1);
     });
-    cy.get('#meetingSummary ul [data-cy="endSummary"]').then(($endDates) => {
+    cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="endSummary"]').then(($endDates) => {
       expect($endDates.length).to.be.eq(1);
     });
-    cy.get('.error').then(($err) => {
+    cy.get('[dat-cy="error"]').then(($err) => {
       expect($err[0].innerText.toLowerCase()).to.contain('cannot schedule meeting in the past');
     });
   });

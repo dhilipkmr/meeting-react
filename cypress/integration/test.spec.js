@@ -346,7 +346,7 @@ context('Meeting Scheduler Test', () => {
     cy.get('[data-cy="meetingSummary"] [data-cy="ul"] [data-cy="endSummary"]').then(($endDates) => {
       expect($endDates.length).to.be.eq(1);
     });
-    cy.get('[dat-cy="error"]').then(($err) => {
+    cy.get('[data-cy="error"]').then(($err) => {
       expect($err[0].innerText.toLowerCase()).to.contain('cannot schedule meeting in the past');
     });
   });

@@ -30,25 +30,23 @@ class MeetingSummary extends React.Component {
     return (
       <React.Fragment>
         <div id="tabs" className="tabs marginT20">
-          <span className={'padL10 d-inbl tab cursorPtr ' + ( activeTab === 0 ? 'activeTab' : '')} onClick={this.changeTab.bind(this, 0)}>All Meetings</span>
-          <span className={'padL10 d-inbl tab cursorPtr ' + ( activeTab === 1 ? 'activeTab' : '')} onClick={this.changeTab.bind(this, 1)}>Today's Meetings</span>
+          <span data-cy="allMeetingsTab" className={'padL10 d-inbl tab cursorPtr ' + ( activeTab === 0 ? 'activeTab' : '')} onClick={this.changeTab.bind(this, 0)}>All Meetings</span>
+          <span data-cy="todayMeetingsTab" className={'padL10 d-inbl tab cursorPtr ' + ( activeTab === 1 ? 'activeTab' : '')} onClick={this.changeTab.bind(this, 1)}>Today's Meetings</span>
           <div id="meetingSummary" className="meetingSummary">
             { meetings.map((meetingItem, index) => {
               const {startDate, startTime, endTime, endDate, buildingName, floorNumber, meetingRoomName} = meetingItem;
               return (
-                <ul className="card d-inbl">
-                  <li key={index}>
-                    <div className="fb">{buildingName + ' _ ' + floorNumber + ' - ' + meetingRoomName}</div>
-                    <div className="padT10">
-                      <span className="fb">Starts at:</span>
-                      <span>{new Date(startDate).toDateString() + ', '}</span>
-                      <span>{startTime}</span>
-                    </div>
-                    <div className="padT10">
-                      <span className="fb">Ends at:</span>
-                      <span>{new Date(endDate).toDateString() + ', '}</span>
-                      <span>{endTime}</span>
-                    </div>
+                <ul className="card d-inbl" key={index}>
+                  <li className="fb" data-cy="summaryHeading">{buildingName + ' - ' + floorNumber + ' - ' + meetingRoomName}</li>
+                  <li className="padT10" data-cy="startSummary">
+                    <span className="fb">Starts at:</span>
+                    <span>{new Date(startDate).toGMTString() + ', '}</span>
+                    <span>{startTime}</span>
+                  </li>
+                  <li className="padT10" data-cy="endSummary">
+                    <span className="fb">Ends at:</span>
+                    <span>{new Date(endDate).toGMTString() + ', '}</span>
+                    <span>{endTime}</span>
                   </li>
                 </ul>
               )

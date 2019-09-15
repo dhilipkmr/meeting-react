@@ -12,17 +12,29 @@ class SchedulerBox extends React.Component {
     this.refs.error.classList.add('dn');
   }
 
+  checkIfWithinTwoHours = (value) => {
+    const currTime = new Date().getTime();
+    if ((currTime >  new Date(value.startMicro).getTime()) && (currTime > new Date(value.endMicro).getTime())) {
+      return "Sorry, cannot Schedule meeting in the past";
+    }
+    if (new Date(value.startMicro).getTime() > new Date(value.endMicro).getTime()) {
+      return "Start time cannot be greater than Endtime";
+    }
+  }
+
   checkIfMeetingRoomFree = (currentMeetingInfo) => {
     let isBooked = false;
+    let bookedObj = null;
     this.props.meetingsList.forEach((value) => {
       const isSameLocation = (currentMeetingInfo.buildingName === value.buildingName && currentMeetingInfo.floorNumber === value.floorNumber && currentMeetingInfo.meetingRoomName === value.meetingRoomName);
       const isSameTime = (currentMeetingInfo.startMicro >= value.startMicro && currentMeetingInfo.startMicro <= value.endMicro) || (currentMeetingInfo.endMicro >= value.startMicro && currentMeetingInfo.endMicro <= value.endMicro);
       if (isSameTime && isSameLocation) {
         isBooked = true;
+        bookedObj = value;
       }
     });
     if (isBooked) {
-      return 'The room is Unavailable';
+      return 'The room is Unavailable, there is a meeting between ' + new Date(bookedObj.startMicro).toGMTString() + ' and ' +  new Date(bookedObj.endMicro).toGMTString();
     }
     return '';
   }
@@ -56,7 +68,8 @@ class SchedulerBox extends React.Component {
       endMicro: getMicro(endDate, endTime),
       buildingName, floorNumber, meetingRoomName
     };
-    const errorText = this.checkIfMeetingRoomFree(value);
+    let errorText = this.checkIfWithinTwoHours(value);
+    errorText = !errorText ? this.checkIfMeetingRoomFree(value) : errorText;
     if (errorText) {
       this.handleError(true, errorText);
       return null;
@@ -72,19 +85,19 @@ class SchedulerBox extends React.Component {
         <div className="textCenter inputContent">
           <div className="txtLeft marginTB40 fb">
             <label className="" htmlFor="buildingName">Block Name: </label>
-            <select ref="buildingName">
-              <option value="Block A"  selected="selected">Block A</option>
+            <select ref="buildingName" data-cy="blockSelector" defaultValue="Block A">
+              <option value="Block A">Block A</option>
               <option value="Block B">Block B</option>
               <option value="Block C">Block C</option>
             </select>
             <label className="padL10" htmlFor="floorNumber">Floor No:</label>
-            <select ref="floorNumber">
-              <option value="Floor 1"  selected="selected">Floor 1</option>
+            <select ref="floorNumber" data-cy="floorSelector" defaultValue="Floor 1">
+              <option value="Floor 1">Floor 1</option>
               <option value="Floor 2">Floor 2</option>
               <option value="Floor 3">Floor 3</option>
             </select>
             <label className="padL10" htmlFor="meetingRoomName">Meeting Room No:</label>
-            <select ref="meetingRoomName">
+            <select ref="meetingRoomName" data-cy="roomSelector" defaultValue="Meeting Room 1">
               <option value="Meeting Room 1">Room 1</option>
               <option value="Meeting Room 2">Room 2</option>
               <option value="Meeting Room 3">Room 3</option>
@@ -92,16 +105,16 @@ class SchedulerBox extends React.Component {
           </div>
           <div className="txtLeft">
             <div className="marginTB40 fb">Meeting Start at :
-              <input type="date" ref="startDate" />
-              <input type="time" ref="startTime" />
+              <input type="date" ref="startDate" data-cy="startDate" />
+              <input type="time" ref="startTime" data-cy="startTime" />
             </div>
             <div className="marginTB40 fb">Meeting Ends at :
-              <input type="date" ref="endDate"/>
-              <input type="time" ref="endTime"/>
+              <input type="date" ref="endDate" data-cy="endDate" />
+              <input type="time" ref="endTime" data-cy="endTime" />
             </div>
           </div>
           <div ref="error" className="dn error padB10">Invalid Input!</div>
-          <button type="button" className="marginB20 btn" onClick={this.scheduleMeeting}>Schedule Meeting</button>
+          <button data-cy="scheduleBtn" type="button" className="marginB20 btn" onClick={this.scheduleMeeting}>Schedule Meeting</button>
         </div>
       </React.Fragment>
     );

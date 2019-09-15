@@ -113,7 +113,7 @@ class SchedulerBox extends React.Component {
               <input type="time" ref="endTime" data-cy="endTime" />
             </div>
           </div>
-          <div ref="error" className="dn error padB10">Invalid Input!</div>
+          <div ref="error" data-cy="error" className="dn error padB10">Invalid Input!</div>
           <button data-cy="scheduleBtn" type="button" className="marginB20 btn" onClick={this.scheduleMeeting}>Schedule Meeting</button>
         </div>
       </React.Fragment>

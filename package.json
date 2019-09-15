@@ -12,7 +12,7 @@
     "start": "HOST=0.0.0.0 && PORT=8000 && ./node_modules/.bin/react-scripts start",
     "pretest": "npm install",
     "build": "react-scripts build",
-    "test": "rm -rf ./junit.xml && ./node_modules/.bin/cypress run",
+    "test": "rm -rf ./junit.xml && ./node_modules/.bin/cypress run"
   },
   "eslintConfig": {
     "extends": "react-app"

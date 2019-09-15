@@ -1,0 +1,12 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "integrationFolder": "cypress",
+  "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Mobile Safari/537.36",
+  "viewportHeight": 700,
+  "viewportWidth": 1280,
+  "video": false,
+  "screenshotOnRunFailure": false,
+  "pluginsFile": false,
+  "supportFile": false,
+  "fixturesFolder": false
+}

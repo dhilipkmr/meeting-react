@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "cypress": "^3.4.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "HOST=0.0.0.0 && PORT=8000 && ./node_modules/.bin/react-scripts start",
+    "pretest": "npm install",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "rm -rf ./junit.xml && ./node_modules/.bin/cypress run",
   },
   "eslintConfig": {
     "extends": "react-app"

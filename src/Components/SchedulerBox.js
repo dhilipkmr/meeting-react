@@ -8,19 +8,19 @@ class SchedulerBox extends React.Component {
         <div className="textCenter inputContent">
           <div className="txtLeft marginTB40 fb">
             <label className="" htmlFor="buildingName">Block Name: </label>
-            <select id="buildingName">
-              <option value="Block A"  selected="selected">Block A</option>
+            <select data-cy="blockSelector" defaultValue="Block A">
+              <option value="Block A">Block A</option>
               <option value="Block B">Block B</option>
               <option value="Block C">Block C</option>
             </select>
             <label className="padL10" htmlFor="floorNumber">Floor No:</label>
-            <select id="floorNumber">
-              <option value="Floor 1"  selected="selected">Floor 1</option>
+            <select data-cy="floorSelector" defaultValue="Floor 1">
+              <option value="Floor 1">Floor 1</option>
               <option value="Floor 2">Floor 2</option>
               <option value="Floor 3">Floor 3</option>
             </select>
             <label className="padL10" htmlFor="meetingRoomName">Meeting Room No:</label>
-            <select id="meetingRoomName">
+            <select data-cy="roomSelector" defaultValue="Meeting Room 1">
               <option value="Meeting Room 1">Room 1</option>
               <option value="Meeting Room 2">Room 2</option>
               <option value="Meeting Room 3">Room 3</option>
@@ -28,16 +28,16 @@ class SchedulerBox extends React.Component {
           </div>
           <div className="txtLeft">
             <div className="marginTB40 fb">Meeting Start at :
-              <input type="date" id="startDate" value=""/>
-              <input type="time" id="startTime" value="00:00"/>
+              <input type="date" data-cy="startDate" />
+              <input type="time" data-cy="startTime" />
             </div>
             <div className="marginTB40 fb">Meeting Ends at :
-              <input type="date" id="endDate" value=""/>
-              <input type="time" id="endTime" value="00:00"/>
+              <input type="date" data-cy="endDate" />
+              <input type="time" data-cy="endTime" />
             </div>
           </div>
-          <div id="error" className="dn error padB10">Invalid Input!</div>
-          <button type="button" className="marginB20 btn" id="scheduleBtn">Schedule Meeting</button>
+          <div data-cy="error" className="error padB10">Error Message</div>
+          <button data-cy="scheduleBtn" type="button" className="marginB20 btn">Schedule Meeting</button>
         </div>
       </React.Fragment>
     );
